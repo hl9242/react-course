@@ -1,0 +1,31 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is React course by Harish Lahane",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hl9242/react-course.git"
+  },
+  "keywords": [],
+  "author": "Harish Lahane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hl9242/react-course/issues"
+  },
+  "homepage": "https://github.com/hl9242/react-course#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "reac": "^0.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browserslist":[
+    "last 2 versions"
+]
+}
