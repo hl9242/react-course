@@ -1,17 +1,63 @@
 import React from "react";
 import ResaurantCard from "./ResaurantCard";
-import { useState } from "react";
-import restObjList from "../utils/mockData";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
+// import restObjList from "../utils/mockData";
 const Body = () => {
-  //! Local State Variable - Super Powerful variable
+  //* Local State Variable - Super Powerful variable
+  console.log("From Body useEffect");
+  const [listOfRestaurants, setlistOfRestaurants] = useState([]);
+  const [listOfFilterRestaurants, setlistOfFilterRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  useEffect(() => {
+    fetechData();
+  }, []);
+  const fetechData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.890984&lng=77.6400098&page_type=DESKTOP_WEB_LISTING"
+    );
+    const apiData = await data.json();
 
-  const [listOfRestaurants, setlistOfRestaurants] = useState(restObjList);
-
-  //? Normal JS Variable
+    setlistOfRestaurants(
+      apiData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setlistOfFilterRestaurants(
+      apiData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  };
+  //* Normal JS Variable
   //   let listOfRestaurants = restObjList;
-  return (
+
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              console.log(searchText);
+
+              const filterArryaResto = listOfRestaurants.filter((resto) =>
+                resto.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase().trim())
+              );
+              setlistOfFilterRestaurants(filterArryaResto);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -25,7 +71,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((resObj) => (
+        {listOfFilterRestaurants.map((resObj) => (
           <ResaurantCard resName={resObj} key={resObj.info.id} />
         ))}
       </div>
