@@ -2,10 +2,10 @@ import React from "react";
 import ResaurantCard from "./ResaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // import restObjList from "../utils/mockData";
 const Body = () => {
   //* Local State Variable - Super Powerful variable
-  console.log("From Body useEffect");
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
   const [listOfFilterRestaurants, setlistOfFilterRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -62,9 +62,9 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filterRestoList = listOfRestaurants.filter(
-              (resObj) => resObj?.info.avgRating > "4.5"
+              (resObj) => resObj?.info.avgRating >= 4.5
             );
-            setlistOfRestaurants(filterRestoList);
+            setlistOfFilterRestaurants(filterRestoList);
           }}
         >
           Top Rated Restaurants
@@ -72,7 +72,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {listOfFilterRestaurants.map((resObj) => (
-          <ResaurantCard resName={resObj} key={resObj.info.id} />
+          <Link
+            style={{ color: "rgb(0 0 0)" }}
+            to={"/restaurants/" + resObj.info.id}
+          >
+            <ResaurantCard resName={resObj} key={resObj.info.id} />
+          </Link>
         ))}
       </div>
     </div>
