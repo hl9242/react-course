@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnliineStatus";
 export const Header = () => {
   let loginBtn = "Login";
   const [loginflag, setLoginflag] = useState(true);
@@ -10,6 +11,8 @@ export const Header = () => {
   useEffect(() => {
     // console.log("From Header useEffect");
   }, [loginflag]);
+  const onlineStatus = useOnlineStatus();
+
   return (
     <div className="header">
       <div className="logo-container">
@@ -17,6 +20,7 @@ export const Header = () => {
       </div>
       <div className="nav-item">
         <ul>
+          <li>Status {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -25,6 +29,9 @@ export const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact us</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
           <button
