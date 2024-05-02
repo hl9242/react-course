@@ -1,6 +1,6 @@
-#React course
+# React course
 
-#Parcel
+# Parcel
 
 - Dev Build
 - Local server
@@ -21,7 +21,7 @@
 - Different dev and prod bundles
 -
 
-#Food Ordaring app
+# Food Ordaring app
 
 - Header
 - -Logo
@@ -46,12 +46,13 @@
   export cont Component;
   import { Component } from "path";
 
-#React Hooks
+# React Hooks
+
 (Normal js utility functions)
 -useState() --> Superpowerful State variables in react
 -useEffect()
 
-#2 types Routing in web apps
+# 2 types Routing in web apps
 
 - Client Side Routing
 - Server Side Routing
