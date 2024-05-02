@@ -8,7 +8,7 @@ export const Header = () => {
   //! if dependencies array is empty [] => useEffect is called on initial render(just once) of component
   //! if dependencies array is [loginflag] => called everytime loginflag is updated
   useEffect(() => {
-    console.log("From Header useEffect");
+    // console.log("From Header useEffect");
   }, [loginflag]);
   return (
     <div className="header">
