@@ -1,4 +1,7 @@
-.header {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* .header {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
@@ -22,7 +25,7 @@
   padding: 5px;
   width: 200px;
   /* height: 500px; */
-  border: 1px solid rgba(145, 126, 126, 0.596);
+/* border: 1px solid rgba(145, 126, 126, 0.596);
   margin: 5px;
 }
 .res-container {
@@ -71,4 +74,4 @@
 .user-card {
   padding: 10px;
   border: 1px solid black;
-}
+} */
