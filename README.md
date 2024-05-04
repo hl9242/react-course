@@ -1,5 +1,7 @@
 # React course
 
+# Shorthand for creating a React (Functional) component rfce
+
 # Parcel
 
 - Dev Build
@@ -56,3 +58,12 @@
 
 - Client Side Routing
 - Server Side Routing
+
+# Redux Tookit
+
+- Install @reduxjs/tookit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice(CartSlice)
+- dispatch(action)
+- Slecotor
