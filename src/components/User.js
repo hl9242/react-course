@@ -10,7 +10,7 @@ const User = ({ name }) => {
   //     clearInterval(timer);
   //   };
   // }, []);
-  console.log("User Render");
+  // console.log("User Render");
   return (
     <div className="user-card">
       <h2>Name: {name}</h2>

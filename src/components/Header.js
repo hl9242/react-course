@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnliineStatus";
+import UserContext from "../utils/UserContext";
 export const Header = () => {
   let loginBtn = "Login";
   const [loginflag, setLoginflag] = useState(true);
@@ -12,6 +13,9 @@ export const Header = () => {
     // console.log("From Header useEffect");
   }, [loginflag]);
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser } = useContext(UserContext);
+  console.log(loggedInUser);
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg m-2 sm:bg-yellow-50">
@@ -40,6 +44,7 @@ export const Header = () => {
           >
             {loginflag ? loginBtn : "Logout"}
           </button>
+          <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>
